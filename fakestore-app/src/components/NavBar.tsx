@@ -1,7 +1,11 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav, Container, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../redux/hooks';
 
 const NavBar = () => {
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
       <Container>
@@ -13,7 +17,7 @@ const NavBar = () => {
             Shop
           </Nav.Link>
           <Nav.Link as={Link} to="/cart">
-            Cart
+            Cart <Badge bg="light" text="dark">{totalCount}</Badge>
           </Nav.Link>
         </Nav>
       </Container>

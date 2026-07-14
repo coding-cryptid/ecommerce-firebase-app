@@ -1,5 +1,7 @@
 import { Card, Button } from 'react-bootstrap';
 import type { Product } from '../types/Product';
+import { useAppDispatch } from '../redux/hooks';
+import { addToCart } from '../redux/cartSlice';
 
 interface ProductCardProps {
   product: Product;
@@ -8,6 +10,12 @@ interface ProductCardProps {
 const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/300x300?text=No+Image';
 
 const ProductCard = ({ product }: ProductCardProps) => {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <Card className="h-100">
       <Card.Img
@@ -32,7 +40,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
         <div className="mt-auto d-flex justify-content-between align-items-center">
           <strong>${product.price.toFixed(2)}</strong>
-          <Button variant="primary" size="sm">
+          <Button variant="primary" size="sm" onClick={handleAddToCart}>
             Add to Cart
           </Button>
         </div>
