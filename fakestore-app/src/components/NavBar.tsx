@@ -17,7 +17,7 @@ const NavBar = () => {
             Shop
           </Nav.Link>
           <Nav.Link as={Link} to="/cart">
-            Cart <Badge bg="light" text="dark">{totalCount}</Badge>
+            🛍️    <Badge bg="light" text="dark">{totalCount}</Badge>
           </Nav.Link>
         </Nav>
       </Container>
