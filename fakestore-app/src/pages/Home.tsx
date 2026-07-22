@@ -1,23 +1,12 @@
-import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { Container, Row, Col, Spinner, Form } from 'react-bootstrap';
-import { fetchProducts, fetchCategories, fetchProductsByCategory } from '../api/productApi';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import ProductCard from '../components/ProductCard';
+import { fetchProductsFromFirestore } from '../firebase/productService';
 
 const Home = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
-
-  const { data: categories } = useQuery({
-    queryKey: ['categories'],
-    queryFn: fetchCategories,
-  });
-
   const { data: products, isLoading, isError } = useQuery({
-    queryKey: ['products', selectedCategory],
-    queryFn: () =>
-      selectedCategory
-        ? fetchProductsByCategory(selectedCategory)
-        : fetchProducts(),
+    queryKey: ['products'],
+    queryFn: fetchProductsFromFirestore,
   });
 
   if (isLoading) {
@@ -36,20 +25,6 @@ const Home = () => {
   return (
     <Container className="mt-4">
       <h1 className="mb-4">Products</h1>
-      
-      <Form.Select
-        className="mb-4"
-        style={{ maxWidth: '300px' }}
-        value={selectedCategory}
-        onChange={(e) => setSelectedCategory(e.target.value)}
-      >
-        <option value="">All Categories</option>
-        {categories?.map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-      </Form.Select>
 
       <Row xs={1} sm={2} md={3} lg={4} className="g-4">
         {products?.map((product) => (

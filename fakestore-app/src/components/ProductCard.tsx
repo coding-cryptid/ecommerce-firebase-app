@@ -36,7 +36,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.description.slice(0, 80)}...
         </Card.Text>
         <div className="mb-2">
-          ⭐ {product.rating.rate} ({product.rating.count} reviews)
+          ⭐ {product.rating?.rate ?? 'N/A'} ({product.rating?.count ?? 0} reviews)
         </div>
         <div className="mt-auto d-flex justify-content-between align-items-center">
           <strong>${product.price.toFixed(2)}</strong>
