@@ -5,7 +5,7 @@ import { fetchOrderById } from '../firebase/orderService';
 
 const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/80x80?text=No+Image';
 
-const OrderDetail = () => {
+const OrderDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   const { data: order, isLoading, isError } = useQuery({
@@ -58,4 +58,4 @@ const OrderDetail = () => {
   );
 };
 
-export default OrderDetail;
+export default OrderDetails;

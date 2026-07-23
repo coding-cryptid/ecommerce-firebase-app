@@ -35,6 +35,7 @@ const NavBar = () => {
             <>
               <Nav.Link as={Link} to="/profile">Hi, {user.name}</Nav.Link>
               <Nav.Link as={Link} to="/manage-products">Manage Products</Nav.Link>
+              <Nav.Link as={Link} to="/orders">Order History</Nav.Link>
               <Button variant="outline-light" size="sm" onClick={handleLogout}>
                 Logout
               </Button>
