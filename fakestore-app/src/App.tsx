@@ -6,6 +6,7 @@ import Register from './pages/Register.tsx';
 import NavBar from './components/NavBar.tsx';
 import { useAuthListener } from './firebase/useAuthListener';
 import Profile from './pages/Profile.tsx';
+import ManageProducts from './pages/manageProducts.tsx';
 
 function App() {
   useAuthListener();
@@ -19,6 +20,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/manage-products" element={<ManageProducts />} />
       </Routes>
     </>
   );
