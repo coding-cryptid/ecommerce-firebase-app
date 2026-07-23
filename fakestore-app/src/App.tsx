@@ -7,6 +7,7 @@ import NavBar from './components/NavBar.tsx';
 import { useAuthListener } from './firebase/useAuthListener';
 import Profile from './pages/Profile.tsx';
 import ManageProducts from './pages/ManageProducts.tsx';
+import OrderHistory from './pages/OrderHistory.tsx';
 
 function App() {
   useAuthListener();
