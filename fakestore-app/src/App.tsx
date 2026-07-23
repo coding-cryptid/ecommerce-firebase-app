@@ -8,6 +8,7 @@ import { useAuthListener } from './firebase/useAuthListener';
 import Profile from './pages/Profile.tsx';
 import ManageProducts from './pages/ManageProducts.tsx';
 import OrderHistory from './pages/OrderHistory.tsx';
+import OrderDetails from './pages/OrderDetails.tsx';
 
 function App() {
   useAuthListener();
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/manage-products" element={<ManageProducts />} />
         <Route path="/orders" element={<OrderHistory />} />
+        <Route path="/order-details" element={< OrderDetails />} />
       </Routes>
     </>
   );
