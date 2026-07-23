@@ -2,24 +2,37 @@ import { useState } from 'react';
 import { Container, Row, Col, Button, ListGroup, Image, Alert } from 'react-bootstrap';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { removeFromCart, clearCart } from '../redux/cartSlice';
+import { createOrder } from '../firebase/orderService';
 
 const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/80x80?text=No+Image';
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
+  const user = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
-
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [showSucess, setShowSuccess] = useState(false);
+  const [checkingOut, setCheckingOut] = useState(false);
 
   const handleRemove = (id: number) => {
     dispatch(removeFromCart(id));
   };
 
-  const handleCheckout = () => {
-    dispatch(clearCart());
-    setShowSuccess(true);
+  const handleCheckout = async () => {
+    if (!user) {
+      return;
+    }
 
-    setTimeout(() => setShowSuccess(false), 3000);
+    setCheckingOut(true);
+    try {
+      await createOrder(user.uid, cartItems, totalPrice);
+      dispatch(clearCart());
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 3000);
+    } catch (err) {
+      console.error('Checkout failed', err);
+    } finally {
+      setCheckingOut(false);
+    }
   };
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -87,8 +100,8 @@ const Cart = () => {
               <p className="mb-3">
                 <strong>Total Price:</strong> ${totalPrice.toFixed(2)}
               </p>
-              <Button variant="success" size="lg" onClick={handleCheckout}>
-                Checkout
+              <Button variant="success" size="lg" onClick={handleCheckout} disabled={checkingOut}>
+                {checkingOut ? 'Placing order...' : 'Checkout'}
               </Button>
             </Col>
           </Row>

@@ -21,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/manage-products" element={<ManageProducts />} />
+        <Route path="/orders" element={<OrderHistory />} />
       </Routes>
     </>
   );
