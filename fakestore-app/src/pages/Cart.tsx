@@ -8,7 +8,7 @@ const PLACEHOLDER_IMAGE = 'https://placehold.co/300x300?text=No+Image';
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
-  const user = useAppSelector((state) => state.cart.items);
+  const user = useAppSelector((state) => state.auth.user);
   const dispatch = useAppDispatch();
   const [showSuccess, setShowSuccess] = useState(false);
   const [checkingOut, setCheckingOut] = useState(false);
