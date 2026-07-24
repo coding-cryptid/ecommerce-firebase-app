@@ -10,7 +10,7 @@ const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
   const user = useAppSelector((state) => state.cart.items);
   const dispatch = useAppDispatch();
-  const [showSucess, setShowSuccess] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [checkingOut, setCheckingOut] = useState(false);
 
   const handleRemove = (id: number) => {
