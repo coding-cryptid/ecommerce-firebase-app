@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { removeFromCart, clearCart } from '../redux/cartSlice';
 import { createOrder } from '../firebase/orderService';
 
-const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/80x80?text=No+Image';
+const PLACEHOLDER_IMAGE = 'https://placehold.co/300x300?text=No+Image';
 
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.items);

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container, ListGroup, Image, Spinner } from 'react-bootstrap';
 import { fetchOrderById } from '../firebase/orderService';
 
-const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/80x80?text=No+Image';
+const PLACEHOLDER_IMAGE = 'https://placehold.co/300x300?text=No+Image';
 
 const OrderDetails = () => {
   const { id } = useParams<{ id: string }>();

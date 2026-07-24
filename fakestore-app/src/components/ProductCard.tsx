@@ -7,7 +7,7 @@ interface ProductCardProps {
   product: Product;
 }
 
-const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/300x300?text=No+Image';
+const PLACEHOLDER_IMAGE = 'https://placehold.co/300x300?text=No+Image';
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const dispatch = useAppDispatch();
