@@ -49,7 +49,13 @@ export const registerUser = async (
     createdAt: new Date().toISOString(),
   };
 
-  await setDoc(doc(db, 'users', uid), newUserProfile);
+  try {
+    await setDoc(doc(db, 'users', uid), newUserProfile);
+  } catch (error) {
+    await userCredential.user.delete();
+    throw error;
+  }
+
   return newUserProfile;
 };
 
