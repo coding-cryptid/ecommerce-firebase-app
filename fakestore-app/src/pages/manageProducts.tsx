@@ -54,7 +54,7 @@ const ManageProducts = () => {
   };
 
   const handleEdit = (product: Product) => {
-    setEditingId(product.id);
+    setEditingId(String(product.id));
     setForm({
       title: product.title,
       price: String(product.price),
@@ -69,8 +69,8 @@ const ManageProducts = () => {
     setForm(emptyForm);
   };
 
-  const handleDelete = async (id: string) => {
-    await deleteProduct(id);
+  const handleDelete = async (id: string | number) => {
+    await deleteProduct(String(id));
     queryClient.invalidateQueries({ queryKey: ['products'] });
   };
 
