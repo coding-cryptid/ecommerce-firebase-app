@@ -12,7 +12,7 @@ const mockProduct: Product = {
   price: 24.99,
   category: 'electronics',
   description: 'A comfortable wireless mouse',
-  image: 'https://example.com/mouse.jpg',
+  image: 'https://example.com/mouse.jpg'
 };
 
 
