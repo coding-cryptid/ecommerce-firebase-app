@@ -5,10 +5,10 @@ import type { Product } from '../types/Product';
 export const fetchProductsFromFirestore = async (): Promise<Product[]> => {
   const snapshot = await getDocs(collection(db, 'products'));
 
-  return snapshot.docs.map((docSnap) => ({
-    id: docSnap.id,
-    ...docSnap.data(),
-  })) as Product[];
+  return snapshot.docs.map((docSnap) => {
+    const data = docSnap.data() as Omit<Product, 'id'>;
+    return { id: Number(docSnap.id), ...data };
+  });
 };
 
 export const createProduct = async (product: Omit<Product, 'id'>): Promise<void> => {
