@@ -12,7 +12,7 @@ export const fetchProductsFromFirestore = async (): Promise<Product[]> => {
       const data = docSnap.data() as Omit<Product, 'id'>;
 
       return {
-        id: Number(docSnap.id),
+        id: (docSnap.id),
         ...data,
       };
     });
