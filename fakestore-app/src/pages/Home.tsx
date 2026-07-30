@@ -4,7 +4,12 @@ import ProductCard from '../components/ProductCard';
 import { fetchProductsFromFirestore } from '../firebase/productService';
 
 const Home = () => {
-  const { data: products, isLoading, isError } = useQuery({
+  const {
+    data: products,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ['products'],
     queryFn: fetchProductsFromFirestore,
   });
@@ -19,7 +24,13 @@ const Home = () => {
   }
 
   if (isError) {
-    return <p className="text-center mt-5">Something went wrong fetching products.</p>;
+    console.error('Product fetch error:', error);
+
+    return (
+      <p className="text-center mt-5">
+        Something went wrong fetching products.
+      </p>
+    );
   }
 
   return (
