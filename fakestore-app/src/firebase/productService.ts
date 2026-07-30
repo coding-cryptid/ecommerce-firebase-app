@@ -3,12 +3,24 @@ import { db } from './config';
 import type { Product } from '../types/Product';
 
 export const fetchProductsFromFirestore = async (): Promise<Product[]> => {
-  const snapshot = await getDocs(collection(db, 'products'));
+  try {
+    const snapshot = await getDocs(collection(db, 'products'));
 
-  return snapshot.docs.map((docSnap) => {
-    const data = docSnap.data() as Omit<Product, 'id'>;
-    return { id: Number(docSnap.id), ...data };
-  });
+    console.log("Products fetched:", snapshot.docs.length);
+
+    return snapshot.docs.map((docSnap) => {
+      const data = docSnap.data() as Omit<Product, 'id'>;
+
+      return {
+        id: Number(docSnap.id),
+        ...data,
+      };
+    });
+
+  } catch (error) {
+    console.error("Firestore product fetch failed:", error);
+    throw error;
+  }
 };
 
 export const createProduct = async (product: Omit<Product, 'id'>): Promise<void> => {
