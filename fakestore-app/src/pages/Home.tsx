@@ -24,14 +24,25 @@ const Home = () => {
   }
 
   if (isError) {
-    console.error('Product fetch error:', error);
+  return (
+    <div>
+      <h3>Product Error</h3>
+      <pre>
+        {JSON.stringify(error, null, 2)}
+      </pre>
+    </div>
+  );
+}
 
-    return (
-      <p className="text-center mt-5">
-        Something went wrong fetching products.
-      </p>
-    );
-  }
+  // if (isError) {
+  //   console.error('Product fetch error:', error);
+
+  //   return (
+  //     <p className="text-center mt-5">
+  //       Something went wrong fetching products.
+  //     </p>
+  //   );
+  // }
 
   return (
     <Container className="mt-4">
