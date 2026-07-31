@@ -7,7 +7,7 @@ import ProductCard from './ProductCard';
 import type { Product } from '../types/Product';
 
 const mockProduct: Product = {
-  id: 1,
+  id: '1',
   title: 'Wireless Mouse',
   price: 24.99,
   category: 'electronics',
