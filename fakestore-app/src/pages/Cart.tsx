@@ -13,7 +13,7 @@ const Cart = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [checkingOut, setCheckingOut] = useState(false);
 
-  const handleRemove = (id: number) => {
+  const handleRemove = (id: string) => {
     dispatch(removeFromCart(id));
   };
 
