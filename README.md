@@ -78,7 +78,7 @@ src/
 └── main.tsx                                    # Entry point: Redux Provider, BrowserRouter, React Query
 ```
 
-## Getting Started
+## Getting Started (For local use)
 
 ### Prerequisites
 - Node.js (v18 or higher recommended)
