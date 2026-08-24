@@ -1,4 +1,4 @@
-# FakeStore Cart App — Firebase Edition 🛒
+# E-Commerce Firebase App 🛒
 
 A React + TypeScript e-commerce application originally built on the FakeStore API, migrated to a full Firebase backend. Users can register and log in, browse and manage products, build a cart, place orders, and view their order history — all backed by Firebase Authentication and Firestore.
 
