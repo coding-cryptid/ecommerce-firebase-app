@@ -47,9 +47,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
+        working-directory: ./fakestore-app
         run: npm ci
 
       - name: Install Vercel CLI
+        working-directory: ./fakestore-app
         run: npm install -g vercel
 
       - name: Pull Vercel Environment Information
