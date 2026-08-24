@@ -38,9 +38,9 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./fakestore-app
+    # defaults:
+    #   run:
+    #     working-directory: ./fakestore-app
 
     steps:
       - name: Checkout code
